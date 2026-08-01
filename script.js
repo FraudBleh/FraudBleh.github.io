@@ -1,23 +1,28 @@
-const particles=document.querySelector(".particles");
+const particles = document.getElementById("particles");
 
-for(let i=0;i<80;i++){
+for(let i = 0; i < 90; i++){
 
-const dot=document.createElement("span");
+    const particle = document.createElement("div");
 
-dot.style.left=Math.random()*100+"%";
+    particle.className = "particle";
 
-dot.style.animationDuration=
-5+Math.random()*10+"s";
+    const size = Math.random() * 4 + 2;
 
-dot.style.animationDelay=
-Math.random()*8+"s";
+    particle.style.width = size + "px";
+    particle.style.height = size + "px";
 
-dot.style.opacity=Math.random();
+    particle.style.left =
+    Math.random() * 100 + "%";
 
-dot.style.width=
-dot.style.height=
-Math.random()*4+2+"px";
+    particle.style.animationDuration =
+    (Math.random() * 8 + 6) + "s";
 
-particles.appendChild(dot);
+    particle.style.animationDelay =
+    Math.random() * 8 + "s";
+
+    particle.style.opacity =
+    Math.random() * 0.6 + 0.2;
+
+    particles.appendChild(particle);
 
 }
