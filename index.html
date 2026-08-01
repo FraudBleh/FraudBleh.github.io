@@ -1,42 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Passion | Coming Soon</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-<link rel="stylesheet" href="style.css">
+body{
+
+background:#000;
+color:#fff;
+
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"SF Pro Display",
+"SF Pro Text",
+"Segoe UI",
+Helvetica,
+Arial,
+sans-serif;
+
+height:100vh;
+overflow:hidden;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+}
+
+/* Gold Glow */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:900px;
+height:900px;
+
+background:radial-gradient(circle,
+rgba(212,175,55,.18),
+transparent 70%);
+
+animation:pulse 8s ease-in-out infinite;
+
+}
+
+@keyframes pulse{
+
+0%,100%{
+transform:scale(.9);
+opacity:.35;
+}
+
+50%{
+transform:scale(1.2);
+opacity:.8;
+}
+
+}
+
+.container{
+
+text-align:center;
+z-index:10;
+padding:40px;
+
+}
+
+.logo{
+
+width:520px;
+max-width:90%;
+
+animation:
+fade 1.5s ease,
+float 7s ease-in-out infinite;
+
+filter:
+drop-shadow(0 0 30px rgba(212,175,55,.25));
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+}
+
+.small{
+
+margin-top:50px;
+
+letter-spacing:8px;
+
+font-size:13px;
+
+font-weight:600;
+
+text-transform:uppercase;
+
+color:#C8A951;
+
+}
+
+.title{
+
+margin-top:25px;
+
+font-size:52px;
+
+font-weight:700;
+
+color:white;
+
+}
+
+.subtitle{
+
+margin-top:20px;
+
+font-size:22px;
+
+font-weight:400;
+
+color:#d6d6d6;
+
+line-height:1.8;
+
+max-width:650px;
+
+margin-left:auto;
+margin-right:auto;
+
+}
+
+.line{
+
+width:220px;
+height:2px;
+
+margin:50px auto;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+#D4AF37,
+#FFD700,
+#D4AF37,
+transparent);
+
+background-size:300%;
+
+animation:shine 4s linear infinite;
+
+}
+
+@keyframes shine{
+
+from{
+background-position:0%;
+}
+
+to{
+background-position:300%;
+}
+
+}
+
+.discord{
+
+display:inline-flex;
+
+align-items:center;
+justify-content:center;
+
+padding:18px 40px;
+
+border-radius:999px;
+
+font-size:17px;
+font-weight:600;
+
+text-decoration:none;
+
+color:white;
+
+border:1px solid rgba(212,175,55,.4);
+
+background:rgba(255,255,255,.04);
+
+backdrop-filter:blur(20px);
+
+transition:.35s;
+
+}
+
+.discord:hover{
+
+background:#D4AF37;
+
+color:black;
+
+transform:translateY(-4px);
+
+box-shadow:
+0 0 40px rgba(212,175,55,.55);
+
+}
+
+/* Floating particles */
+
+.particle{
+
+position:absolute;
+
+background:#D4AF37;
+
+border-radius:50%;
+
+opacity:.4;
+
+animation:rise linear infinite;
+
+}
+
+@keyframes rise{
+
+from{
+
+transform:translateY(100vh);
+
+}
+
+to{
+
+transform:translateY(-10vh);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.logo{
+width:300px;
+}
+
+.title{
+font-size:34px;
+}
+
+.subtitle{
+font-size:18px;
+padding:0 20px;
+}
+
+}
+
+</style>
 
 </head>
+
 <body>
 
-<div class="particles"></div>
+<div id="particles"></div>
 
-<div class="overlay"></div>
+<div class="container">
 
-<section class="hero">
+<img src="logo.png" class="logo" alt="Passion Logo">
 
-<img src="logo.png" class="logo">
+<div class="small">
+COMING SOON
+</div>
 
-<h2>COMING SOON</h2>
+<h1 class="title">
+Passion is Coming.
+</h1>
 
-<p>
-Luxury begins with passion.
-A timeless experience is arriving.
+<p class="subtitle">
+Crafted with purpose.<br>
+Built for the community.<br>
+Luxury begins here.
 </p>
 
-<div class="gold-line"></div>
+<div class="line"></div>
 
-</section>
+<a class="discord"
+href="https://discord.gg/passions"
+target="_blank">
+Join Our Discord
+</a>
 
-<script src="script.js"></script>
+</div>
+
+<script>
+
+const container=document.getElementById("particles");
+
+for(let i=0;i<80;i++){
+
+const p=document.createElement("div");
+
+p.className="particle";
+
+const size=Math.random()*4+2;
+
+p.style.width=size+"px";
+p.style.height=size+"px";
+
+p.style.left=Math.random()*100+"%";
+
+p.style.animationDuration=
+(Math.random()*8+6)+"s";
+
+p.style.animationDelay=
+Math.random()*8+"s";
+
+p.style.opacity=Math.random();
+
+container.appendChild(p);
+
+}
+
+</script>
 
 </body>
 </html>
