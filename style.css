@@ -1,9 +1,0 @@
-body {
-  background-color: black; /* Set the color */
-  margin: 0;               /* Remove the default white border browsers add */
-  height: 100vh;           /* Make sure it covers the full height */
-  display: flex;           /* Use Flexbox to help center content */
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
-  overflow: hidden;        /* Prevents scrollbars from appearing */
-}
